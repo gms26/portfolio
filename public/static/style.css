@@ -1,0 +1,264 @@
+/* =============================
+   GLOBAL STYLES
+============================= */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+/* =============================
+   HEADER (Glass Effect)
+============================= */
+
+.glass-header {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  padding: 8px 18px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* =============================
+   HERO SECTION
+============================= */
+
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero-subtext {
+  font-size: 16px;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* =============================
+   SECTION CONTAINER
+============================= */
+
+.section {
+  padding: 30px;
+}
+
+/* =============================
+   NEW GRID LAYOUT
+============================= */
+
+.new-grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* =============================
+   GLASSMORPHIC CARDS
+============================= */
+
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 16px;
+  transition: 0.25s;
+  overflow: hidden;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0px 10px 28px rgba(0,0,0,0.4);
+}
+
+.card img {
+  width: 250px;
+  height: 180px;      /* Reduce height */
+  object-fit: cover;  /* Crop nicely */
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+
+.card h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card small {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+/* =============================
+   FOOTER
+============================= */
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+  margin-top: 40px;
+  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+/* =============================
+   SEARCH & FILTER UI
+============================= */
+
+.filter-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.filter-select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+}
+.nav-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 6px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+/* =======================================
+   FADE IN ANIMATION FOR CARDS
+======================================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scrolling for whole website */
+html {
+  scroll-behavior: smooth;
+}
+/* =======================================
+   DARK / LIGHT THEME
+======================================= */
+
+body.light {
+  background: #f2f2f2;
+  color: #111;
+}
+
+body.light .glass-header {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body.light .card {
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
+}
+
+body.light .nav-btn {
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+/* ==============================
+   Admin Form UI
+============================== */
+
+.card-form {
+  width: 30%;
+  margin: auto;
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+}
+
+.input-label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+.input-box {
+  width: 400px;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: rgba(255,255,255,0.7);
+}
+
+.full-btn {
+  width: 400px;
+  padding: 12px;
+  margin-top: 10px;
+  margin-left: 15px;
+}

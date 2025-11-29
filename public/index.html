@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+<header class="glass-header">
+  <h1 class="logo">My Portfolio</h1>
+
+  <nav>
+    <button id="themeToggle" class="nav-btn">🌙 Dark Mode</button>
+    <a href="/login.html" class="nav-btn">Admin Login</a>
+  </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero-section">
+  <h2 class="hero-title">Welcome to GMS Portfolio</h2>
+  <p class="hero-subtext">
+    A timeline of my achievements, certifications, and projects.
+  </p>
+</section>
+
+<!-- ================================
+     ACHIEVEMENTS SECTION
+================================ -->
+<section class="section">
+  <h2 class="section-title">Achievements</h2>
+
+  <div class="filter-box">
+    <input 
+      type="text" 
+      id="searchInput" 
+      class="search-input" 
+      placeholder="Search achievements..."
+    >
+
+    <select id="typeFilter" class="filter-select">
+      <option value="">All Types</option>
+      <option value="Achievement">Achievement</option>
+      <option value="Certificate">Certificate</option>
+      <option value="Award">Award</option>
+    </select>
+
+    <select id="sortFilter" class="filter-select">
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
+
+  <!-- VERY IMPORTANT -->
+  <div id="achievementList" class="new-grid"></div>
+</section>
+
+<!-- ================================
+     PROJECTS SECTION (CORRECT)
+================================ -->
+<section class="section">
+  <h2 class="section-title">Projects</h2>
+
+  <!-- VERY IMPORTANT: Must match main.js -->
+  <div id="projectList" class="new-grid"></div>
+</section>
+
+
+<section class="section">
+  <h2 class="section-title">Resume</h2>
+  <div id="resumeDisplay"></div>
+</section>
+
+<footer class="footer">
+  © 2025 My Portfolio. All rights reserved.
+</footer>
+
+<script src="static/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - Resume</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+<script>
+  if (!localStorage.getItem("token")) {
+    window.location.href = "/login.html";
+  }
+</script>
+
+<!-- NAVBAR -->
+<header class="glass-header">
+  <h1 class="logo">Manage Resume</h1>
+
+  <div>
+    <a href="/" class="nav-btn">View Portfolio</a>
+    <a href="/admin.html" class="nav-btn">Achievements</a>
+    <a href="/admin-projects.html" class="nav-btn">Projects</a>
+    <a href="/admin-resume.html" class="nav-btn active">Resume</a>
+    <button onclick="logout()" class="nav-btn">Logout</button>
+  </div>
+</header>
+
+<!-- RESUME MANAGEMENT -->
+<section class="section card-form">
+  <h2 class="section-title">Upload Resume (PDF)</h2>
+
+  <form id="resumeForm" enctype="multipart/form-data">
+    <label class="input-label">Select PDF File</label>
+    <input type="file" name="resumeFile" class="input-box" required>
+    <button type="submit" class="nav-btn full-btn">Upload Resume</button>
+  </form>
+
+  <p id="resumeStatus" style="margin-top:15px;"></p>
+
+  <button id="deleteResumeBtn" class="nav-btn full-btn" style="display:none; margin-top:10px;">
+    Delete Resume
+  </button>
+</section>
+
+<script src="/static/adminResume.js"></script>
+
+</body>
+</html>
+
+<script>
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "/login.html";
+}
+</script>
