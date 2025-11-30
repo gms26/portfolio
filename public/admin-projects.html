@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - Projects</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<script>
+  if (!localStorage.getItem("token")) {
+    window.location.href = "/login.html";
+  }
+</script>
+
+<header class="glass-header">
+  <h1 class="logo">Manage Projects</h1>
+
+  <nav>
+    <a href="/" class="nav-btn">View Portfolio</a>
+    <a href="/admin.html" class="nav-btn">Achievements</a>
+    <a href="/admin-projects.html" class="nav-btn active">Projects</a>
+    <a href="/admin-resume.html" class="nav-btn">Resume</a>
+    <button onclick="logout()" class="nav-btn">Logout</button>
+  </nav>
+</header>
+
+<section class="section card-form">
+  <h2 class="section-title">Add Project</h2>
+
+  <form id="projectForm" enctype="multipart/form-data">
+    <label class="input-label">Title</label>
+    <input type="text" name="title" class="input-box" required>
+
+    <label class="input-label">Description</label>
+    <textarea name="description" class="input-box" required></textarea>
+
+    <label class="input-label">Tech Stack</label>
+    <input type="text" name="techStack" class="input-box">
+
+    <label class="input-label">Project Link (optional)</label>
+    <input type="text" name="link" class="input-box">
+
+    <label class="input-label">Image / PDF (optional)</label>
+    <input type="file" name="file" class="input-box">
+
+    <button type="submit" class="nav-btn full-btn">Save</button>
+  </form>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Existing Projects</h2>
+  <div id="adminProjectList" class="new-grid"></div>
+</section>
+
+<script src="static/adminProjects.js"></script>
+
+<script>
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "/login.html";
+  }
+</script>
+
+
+</body>
+</html>

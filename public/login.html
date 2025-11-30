@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<header class="glass-header">
+  <h1 class="logo">Admin Login</h1>
+  <nav>
+    <a href="/" class="nav-btn">Back to Portfolio</a>
+  </nav>
+</header>
+
+<section class="section card-form">
+  <h2 class="section-title">Login</h2>
+
+  <form id="loginForm">
+    <label class="input-label">Username</label>
+    <input type="text" name="username" class="input-box" required>
+
+    <label class="input-label">Password</label>
+    <input type="password" name="password" class="input-box" required>
+
+    <button type="submit" class="nav-btn full-btn">Login</button>
+  </form>
+
+  <p id="loginStatus" style="margin-top:10px;"></p>
+</section>
+
+<script src="static/login.js"></script>
+
+</body>
+</html>

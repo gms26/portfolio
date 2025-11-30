@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: portfolio
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
