@@ -1,3 +1,8 @@
+// Auto-select backend URL
+const API_BASE = location.hostname === "localhost"
+  ? "http://localhost:10000"          // Local backend
+  : "https://portfolio-backend.onrender.com";  // Render backend URL
+
 const token = localStorage.getItem("token");
 if (!token) {
   window.location.href = "/login.html";

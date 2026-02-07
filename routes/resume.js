@@ -14,11 +14,30 @@ router.post("/", authMiddleware, upload.single("resumeFile"), async (req, res) =
       return res.status(400).json({ message: "No file uploaded" });
     }
 
+    // Delete old resume from Cloudinary before uploading new one
+    const oldResume = await Resume.findOne();
+    if (oldResume && oldResume.resumeUrl) {
+      try {
+        const urlParts = oldResume.resumeUrl.split('/');
+        const filename = urlParts[urlParts.length - 1];
+        const publicId = 'resumes/' + filename.split('.')[0];
+        await cloudinary.uploader.destroy(publicId, { resource_type: 'raw' });
+      } catch (e) {
+        console.log('Could not delete old file from Cloudinary:', e.message);
+      }
+    }
+
     let url = null;
 
     await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
-        { resource_type: "raw", folder: "resumes" },
+        { 
+          resource_type: "raw", 
+          folder: "resumes",
+          public_id: `resume_${Date.now()}`,
+          overwrite: true,
+          invalidate: true  // forces CDN cache refresh
+        },
         async (error, result) => {
           if (error) return reject(error);
           url = result.secure_url;
@@ -28,7 +47,7 @@ router.post("/", authMiddleware, upload.single("resumeFile"), async (req, res) =
       stream.end(req.file.buffer);
     });
 
-    // Remove old resumes
+    // Remove old resumes from database
     await Resume.deleteMany({});
     const newResume = await Resume.create({ resumeUrl: url });
 

@@ -1,4 +1,9 @@
 // THEME TOGGLE
+// Auto-select backend URL
+const API_BASE = location.hostname === "localhost"
+  ? "http://localhost:10000"          // Local backend
+  : "https://portfolio-backend.onrender.com";  // Render backend URL
+
 const toggleBtn = document.getElementById("themeToggle");
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {

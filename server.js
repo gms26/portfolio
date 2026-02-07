@@ -29,6 +29,11 @@ app.use("/api/projects", projectsRoute);
 app.use("/api/login", authRoute);
 app.use("/api/resume", resumeRoute);
 
+// Health check endpoint (prevents free tier sleep)
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 // Fallback: serve index.html for unknown frontend routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
