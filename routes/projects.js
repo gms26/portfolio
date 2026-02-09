@@ -20,12 +20,7 @@ router.post("/", authMiddleware, upload.single("file"), async (req, res) => {
           },
           (error, result) => {
             if (error) return reject(error);
-            // Add fl_attachment flag for raw files (PDFs, docs) to enable download
-            if (result.resource_type === 'raw') {
-              fileUrl = result.secure_url.replace('/upload/', '/upload/fl_attachment/');
-            } else {
-              fileUrl = result.secure_url;
-            }
+            fileUrl = result.secure_url;
             resolve();
           }
         );

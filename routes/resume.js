@@ -29,21 +29,24 @@ router.post("/", authMiddleware, upload.single("resumeFile"), async (req, res) =
 
     let url = null;
 
+    // Get original filename extension
+    const originalExt = req.file.originalname.substring(req.file.originalname.lastIndexOf('.')) || '.pdf';
+    const publicId = `resume_${Date.now()}${originalExt}`;
+
     await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
           resource_type: "raw",
           folder: "resumes",
-          public_id: `resume_${Date.now()}`,
+          public_id: publicId,
           overwrite: true,
-          invalidate: true,  // forces CDN cache refresh
+          invalidate: true,
           access_mode: "public",
           type: "upload"
         },
         async (error, result) => {
           if (error) return reject(error);
-          // Add fl_attachment flag to enable proper download
-          url = result.secure_url.replace('/upload/', '/upload/fl_attachment/');
+          url = result.secure_url;
           resolve();
         }
       );
