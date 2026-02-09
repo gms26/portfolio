@@ -31,16 +31,19 @@ router.post("/", authMiddleware, upload.single("resumeFile"), async (req, res) =
 
     await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
-        { 
-          resource_type: "raw", 
+        {
+          resource_type: "raw",
           folder: "resumes",
           public_id: `resume_${Date.now()}`,
           overwrite: true,
-          invalidate: true  // forces CDN cache refresh
+          invalidate: true,  // forces CDN cache refresh
+          access_mode: "public",
+          type: "upload"
         },
         async (error, result) => {
           if (error) return reject(error);
-          url = result.secure_url;
+          // Add fl_attachment flag to enable proper download
+          url = result.secure_url.replace('/upload/', '/upload/fl_attachment/');
           resolve();
         }
       );

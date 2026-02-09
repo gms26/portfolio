@@ -14,10 +14,18 @@ router.post("/", authMiddleware, upload.single("file"), async (req, res) => {
     if (req.file) {
       await new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
-          { resource_type: "auto" },
+          {
+            resource_type: "auto",
+            access_mode: "public"
+          },
           (error, result) => {
             if (error) return reject(error);
-            fileUrl = result.secure_url;
+            // Add fl_attachment flag for raw files (PDFs, docs) to enable download
+            if (result.resource_type === 'raw') {
+              fileUrl = result.secure_url.replace('/upload/', '/upload/fl_attachment/');
+            } else {
+              fileUrl = result.secure_url;
+            }
             resolve();
           }
         );
